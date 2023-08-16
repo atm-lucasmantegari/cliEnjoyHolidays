@@ -17,9 +17,9 @@
 CREATE TABLE llx_clienjoyholidays_voyage(
 	-- BEGIN MODULEBUILDER FIELDS
 	rowid integer AUTO_INCREMENT PRIMARY KEY NOT NULL, 
-	ref varchar(128) DEFAULT '(VOY)' NOT NULL, 
+	ref varchar(128) DEFAULT '(VOY)' NOT NULL UNIQUE,
 	label varchar(255) NOT NULL, 
-	amount double DEFAULT NULL NOT NULL, 
+	amount double NOT NULL, 
 	date_creation datetime NOT NULL, 
 	status integer NOT NULL, 
 	fk_pays integer NOT NULL, 
