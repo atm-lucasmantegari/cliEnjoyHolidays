@@ -1,0 +1,33 @@
+#
+# Generic
+#
+
+ModuleCliEnjoyHolidaysName = EnjoyHolidays
+ModuleCliEnjoyHolidaysDesc = EnjoyHolidays description
+
+#
+# Admin page
+#
+CliEnjoyHolidaysSetup = Parametres EnjoyHolidays
+Settings = Parametres
+CliEnjoyHolidaysSetupPage = Page de parametrage EnjoyHolidays
+
+
+
+#
+# About page
+#
+About = A propos
+CliEnjoyHolidaysAbout = A propos de liEnjoyHolidays
+
+#
+# Sample page
+#
+CliEnjoyHolidaysArea = Acceuil EnjoyHolidays
+
+
+#
+# Sample widget
+#
+ListVoyage = Liste de(s) voyage(s)
+NewVoyage = Nouveau voyage
