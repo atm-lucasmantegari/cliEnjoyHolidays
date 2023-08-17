@@ -202,6 +202,13 @@ if (empty($reshook)) {
 	if ($action == 'classin' && $permissiontoadd) {
 		$object->setProject(GETPOST('projectid', 'int'));
 	}
+	if ($action == 'editlabel' && strlen($object->label) < 5){
+		$backtopage = dol_buildpath('/clienjoyholidays/voyage_card.php?id='.$object->id, 1);
+		header("Location: ".$backtopage);
+		time(0);
+		setEventMessages($langs->trans("toShortLabel"), '', 'errors');
+	}
+
 
 	// Actions to send emails
 	$triggersendname = 'CLIENJOYHOLIDAYS_VOYAGE_SENTBYMAIL';
