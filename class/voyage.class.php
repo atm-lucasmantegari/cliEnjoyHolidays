@@ -226,12 +226,9 @@ class Voyage extends CommonObject
 	public function create(User $user, $notrigger = false)
 	{
 		global $langs;
-
-		$resultcreate = $this->createCommon($user, $notrigger);
-
-		//$resultvalidate = $this->validate($user, $notrigger);
-
 		if (strlen($this->label) >= 5){
+			$resultcreate = $this->createCommon($user, $notrigger);
+			//$resultvalidate = $this->validate($user, $notrigger);
 			return $resultcreate;
 		}else{
 			setEventMessages($langs->trans("toShortLabel"), '', 'errors');
