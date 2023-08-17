@@ -263,17 +263,17 @@ class modCliEnjoyHolidays extends DolibarrModules
 		// Add here entries to declare new permissions
 		/* BEGIN MODULEBUILDER PERMISSIONS */
 		$this->rights[$r][0] = $this->numero . sprintf("%02d", $r + 1); // Permission id (must not be already used)
-		$this->rights[$r][1] = 'ReadobjectsofCliEnjoyHolidays'; // Permission label
+		$this->rights[$r][1] = 'Read objects of CliEnjoyHolidays'; // Permission label
 		$this->rights[$r][4] = 'voyage';
 		$this->rights[$r][5] = 'read'; // In php code, permission will be checked by test if ($user->rights->clienjoyholidays->voyage->read)
 		$r++;
 		$this->rights[$r][0] = $this->numero . sprintf("%02d", $r + 1); // Permission id (must not be already used)
-		$this->rights[$r][1] = 'Create/UpdateobjectsofCliEnjoyHolidays'; // Permission label
+		$this->rights[$r][1] = 'Create/Update objects of CliEnjoyHolidays'; // Permission label
 		$this->rights[$r][4] = 'voyage';
 		$this->rights[$r][5] = 'write'; // In php code, permission will be checked by test if ($user->rights->clienjoyholidays->voyage->write)
 		$r++;
 		$this->rights[$r][0] = $this->numero . sprintf("%02d", $r + 1); // Permission id (must not be already used)
-		$this->rights[$r][1] = 'DeleteobjectsofCliEnjoyHolidays'; // Permission label
+		$this->rights[$r][1] = 'Delete objects of CliEnjoyHolidays'; // Permission label
 		$this->rights[$r][4] = 'voyage';
 		$this->rights[$r][5] = 'delete'; // In php code, permission will be checked by test if ($user->rights->clienjoyholidays->voyage->delete)
 		$r++;
