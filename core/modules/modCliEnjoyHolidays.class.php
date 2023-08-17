@@ -226,12 +226,11 @@ class modCliEnjoyHolidays extends DolibarrModules
 		// Boxes/Widgets
 		// Add here list of php file(s) stored in clienjoyholidays/core/boxes that contains a class to show a widget.
 		$this->boxes = array(
-			//  0 => array(
-			//      'file' => 'clienjoyholidayswidget1.php@clienjoyholidays',
-			//      'note' => 'Widget provided by CliEnjoyHolidays',
-			//      'enabledbydefaulton' => 'Home',
-			//  ),
-			//  ...
+			  0 => array(
+			      'file' => 'clienjoyholidayswidget1.php@clienjoyholidays',
+			      'note' => 'Widget provided by CliEnjoyHolidays',
+			      'enabledbydefaulton' => 'Home',
+			  ),
 		);
 
 		// Cronjobs (List of cron jobs entries to add when module is enabled)
