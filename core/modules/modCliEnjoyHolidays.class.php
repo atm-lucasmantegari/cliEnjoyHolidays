@@ -72,7 +72,7 @@ class modCliEnjoyHolidays extends DolibarrModules
 		$this->editor_url = '';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated', 'experimental_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.4';
+		$this->version = '1.5';
 		// Url to the file with your last numberversion of this module
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
@@ -203,23 +203,25 @@ class modCliEnjoyHolidays extends DolibarrModules
 		$this->dictionaries=array(
 			'langs'=>'clienjoyholidays@clienjoyholidays',
 			// List of tables we want to see into dictonnary editor
-			'tabname'=>array("modetransport"),
+			'tabname'=>array("modetransport", "clienjoyholidays_c_amountdefcountry"),
 			// Label of tables
-			'tablib'=>array("Mode de transports"),
+			'tablib'=>array("Mode de transports", "Tarif par défaut par pays"),
 			// Request to select fields
-			'tabsql'=>array('SELECT f.rowid as rowid, f.code, f.label, f.active FROM '.MAIN_DB_PREFIX.'clienjoyholidays_c_modetransport as f'),
+			'tabsql'=>array('SELECT f.rowid as rowid, f.code, f.label, f.active FROM '.MAIN_DB_PREFIX.'clienjoyholidays_c_modetransport as f',
+				'SELECT  r.rowid as rowid, r.amount as amount, r.country as country_id, c.code as country_code, c.label as country, r.active FROM '.MAIN_DB_PREFIX.'clienjoyholidays_c_amountdefcountry as r, '. MAIN_DB_PREFIX.'c_country as c WHERE c.rowid = r.country',
+			),
 			// Sort order
-			'tabsqlsort'=>array("label ASC"),
+			'tabsqlsort'=>array("label ASC", "country ASC"),
 			// List of fields (result of select to show dictionary)
-			'tabfield'=>array("code,label"),
+			'tabfield'=>array("code,label", "amount,country"),
 			// List of fields (list of fields to edit a record)
-			'tabfieldvalue'=>array("code,label"),
+			'tabfieldvalue'=>array("code,label", "amount,country"),
 			// List of fields (list of fields for insert)
-			'tabfieldinsert'=>array("code,label"),
+			'tabfieldinsert'=>array("code,label", "amount,country"),
 			// Name of columns with primary key (try to always name it 'rowid')
-			'tabrowid'=>array("rowid"),
+			'tabrowid'=>array("rowid", "rowid"),
 			// Condition to show each dictionary
-			'tabcond'=>array($conf->clienjoyholidays->enabled),
+			'tabcond'=>array($conf->clienjoyholidays->enabled, $conf->clienjoyholidays->enabled),
 		);
 
 
