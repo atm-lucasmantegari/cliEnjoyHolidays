@@ -72,7 +72,7 @@ class modCliEnjoyHolidays extends DolibarrModules
 		$this->editor_url = '';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated', 'experimental_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.1';
+		$this->version = '1.3';
 		// Url to the file with your last numberversion of this module
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
@@ -263,17 +263,17 @@ class modCliEnjoyHolidays extends DolibarrModules
 		// Add here entries to declare new permissions
 		/* BEGIN MODULEBUILDER PERMISSIONS */
 		$this->rights[$r][0] = $this->numero . sprintf("%02d", $r + 1); // Permission id (must not be already used)
-		$this->rights[$r][1] = 'Read objects of CliEnjoyHolidays'; // Permission label
+		$this->rights[$r][1] = 'ReadobjectsofCliEnjoyHolidays'; // Permission label
 		$this->rights[$r][4] = 'voyage';
 		$this->rights[$r][5] = 'read'; // In php code, permission will be checked by test if ($user->rights->clienjoyholidays->voyage->read)
 		$r++;
 		$this->rights[$r][0] = $this->numero . sprintf("%02d", $r + 1); // Permission id (must not be already used)
-		$this->rights[$r][1] = 'Create/Update objects of CliEnjoyHolidays'; // Permission label
+		$this->rights[$r][1] = 'Create/UpdateobjectsofCliEnjoyHolidays'; // Permission label
 		$this->rights[$r][4] = 'voyage';
 		$this->rights[$r][5] = 'write'; // In php code, permission will be checked by test if ($user->rights->clienjoyholidays->voyage->write)
 		$r++;
 		$this->rights[$r][0] = $this->numero . sprintf("%02d", $r + 1); // Permission id (must not be already used)
-		$this->rights[$r][1] = 'Delete objects of CliEnjoyHolidays'; // Permission label
+		$this->rights[$r][1] = 'DeleteobjectsofCliEnjoyHolidays'; // Permission label
 		$this->rights[$r][4] = 'voyage';
 		$this->rights[$r][5] = 'delete'; // In php code, permission will be checked by test if ($user->rights->clienjoyholidays->voyage->delete)
 		$r++;
