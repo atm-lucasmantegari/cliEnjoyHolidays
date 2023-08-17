@@ -145,6 +145,7 @@ class clienjoyholidayswidget1 extends ModeleBoxes
 		$sql = " SELECT rowid, ref, label, amount, date_creation, status";
 		$sql .= " FROM " . MAIN_DB_PREFIX . "clienjoyholidays_voyage";
 		$sql .= " ORDER BY date_creation DESC";
+		$sql .= $this->db->plimit($max, 0);
 
 		$result = $this->db->query($sql);
 
