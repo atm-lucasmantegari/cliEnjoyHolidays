@@ -279,7 +279,6 @@ if ($action == 'create') {
 	print dol_get_fiche_end();
 
 	print $form->buttonsSaveCancel("Create");
-
 	print '</form>';
 
 	//dol_set_focus('input[name="ref"]');
