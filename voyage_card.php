@@ -124,11 +124,11 @@ include DOL_DOCUMENT_ROOT.'/core/actions_fetchobject.inc.php'; // Must be includ
 
 // There is several ways to check permission.
 // Set $enablepermissioncheck to 1 to enable a minimum low level of checks
-$enablepermissioncheck = 0;
+$enablepermissioncheck = 1;
 if ($enablepermissioncheck) {
 	$permissiontoread = $user->hasRight('clienjoyholidays', 'voyage', 'read');
 	$permissiontoadd = $user->hasRight('clienjoyholidays', 'voyage', 'write'); // Used by the include of actions_addupdatedelete.inc.php and actions_lineupdown.inc.php
-	$permissiontodelete = $user->hasRight('clienjoyholidays', 'voyage', 'delete') || ($permissiontoadd && isset($object->status) && $object->status == $object::STATUS_DRAFT);
+	$permissiontodelete = $user->hasRight('clienjoyholidays', 'voyage', 'delete');
 	$permissionnote = $user->hasRight('clienjoyholidays', 'voyage', 'write'); // Used by the include of actions_setnotes.inc.php
 	$permissiondellink = $user->hasRight('clienjoyholidays', 'voyage', 'write'); // Used by the include of actions_dellink.inc.php
 } else {
@@ -234,21 +234,18 @@ $title = $langs->trans("Voyage");
 $help_url = '';
 llxHeader('', $title, $help_url);
 
-// Example : Adding jquery code
-// print '<script type="text/javascript">
-// jQuery(document).ready(function() {
-// 	function init_myfunc()
-// 	{
-// 		jQuery("#myid").removeAttr(\'disabled\');
-// 		jQuery("#myid").attr(\'disabled\',\'disabled\');
-// 	}
-// 	init_myfunc();
-// 	jQuery("#mybutton").click(function() {
-// 		init_myfunc();
-// 	});
-// });
-// </script>';
+?>
+<script>
 
+$(document).ready(function(){
+	var perm = "<?php echo !$permissiontoadd; ?>";
+	if (perm){
+		$("span.fas.fa-pencil-alt").hide();
+	}
+});
+
+</script>
+<?php
 
 // Part to create
 if ($action == 'create') {
@@ -375,6 +372,10 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 		$formconfirm = $form->formconfirm($_SERVER["PHP_SELF"].'?id='.$object->id, $langs->trans('XXX'), $text, 'confirm_xxx', $formquestion, 0, 1, 220);
 	}
 
+	if ($action='editlabel'){
+	//	exit();
+	}
+
 	// Call Hook formConfirm
 	$parameters = array('formConfirm' => $formconfirm, 'lineid' => $lineid);
 	$reshook = $hookmanager->executeHooks('formConfirm', $parameters, $object, $action); // Note that $action and $object may have been modified by hook
@@ -393,6 +394,10 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	$linkback = '<a href="'.dol_buildpath('/clienjoyholidays/voyage_list.php', 1).'?restore_lastsearch_values=1'.(!empty($socid) ? '&socid='.$socid : '').'">'.$langs->trans("BackToList").'</a>';
 
 	$morehtmlref = '<div class="refidno">';
+
+	if ($action == 'editlabel') {
+
+	}
 	/*
 		// Ref customer
 		$morehtmlref .= $form->editfieldkey("RefCustomer", 'ref_client', $object->ref_client, $object, $usercancreate, 'string', '', 0, 1);

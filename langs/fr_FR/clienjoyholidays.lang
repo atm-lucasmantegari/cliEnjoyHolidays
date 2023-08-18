@@ -13,7 +13,9 @@ toShortLabel = Label trop court (5 caract. min.)
 CliEnjoyHolidaysSetup = Parametres EnjoyHolidays
 Settings = Parametres
 CliEnjoyHolidaysSetupPage = Page de parametrage EnjoyHolidays
-
+ReadobjectsofCliEnjoyHolidays = Lire un voyage
+Create/UpdateobjectsofCliEnjoyHolidays = Créer/Modifier un voyage
+DeleteobjectsofCliEnjoyHolidays = Supprimer un voyage
 
 
 #
