@@ -996,7 +996,7 @@ class Voyage extends CommonObject
 		$langs->load("clienjoyholidays@clienjoyholidays");
 
 		if (empty($conf->global->CLIENJOYHOLIDAYS_VOYAGE_ADDON)) {
-			$conf->global->CLIENJOYHOLIDAYS_VOYAGE_ADDON = 'mod_voyage_standard';
+			$conf->global->CLIENJOYHOLIDAYS_VOYAGE_ADDON = 'clienjoyholidays\mod_voyage_standard';
 		}
 
 		if (!empty($conf->global->CLIENJOYHOLIDAYS_VOYAGE_ADDON)) {
