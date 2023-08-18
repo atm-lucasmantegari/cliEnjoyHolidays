@@ -231,11 +231,15 @@ class Voyage extends CommonObject
 			if ($this->amount == 0){
 				$sql = " SELECT amount";
 				$sql .= " FROM ". MAIN_DB_PREFIX ."clienjoyholidays_c_amountdefcountry";
-				$sql .= " WHERE active = 1 AND country =" . $this->country;
-				var_dump($sql);
+				$sql .= " WHERE active = 1 AND country =" . $this->fk_pays;
+
 				$resql = $this->db->query($sql);
 				if ($resql) {
 					$obj = $this->db->fetch_object($resql);
+
+					$price = $obj->amount;
+
+
 				}
 			}
 
