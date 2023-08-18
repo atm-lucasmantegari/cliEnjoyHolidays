@@ -37,3 +37,8 @@ DateArrivee = Date d'arrivée
 #
 ListVoyage = Liste de(s) voyage(s)
 NewVoyage = Nouveau voyage
+
+#
+# BOX
+#
+CliEnjoyHolidaysBoxDescription  = Les %s dernières formules de voyage créées
