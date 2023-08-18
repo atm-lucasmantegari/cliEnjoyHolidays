@@ -224,12 +224,15 @@ class Voyage extends CommonObject
 	 */
 	public function create(User $user, $notrigger = false)
 	{
-		global $langs, $conf;
+		global $langs, $conf, $origin, $originid;
 		if (strlen($this->label) >= 5) {
 
 			$this->setPriceCountry();
 
 			$resultcreate = $this->createCommon($user, $notrigger);
+
+			$this->add_object_linked($origin, $originid);
+
 			//$resultvalidate = $this->validate($user, $notrigger);
 			return $resultcreate;
 		} else {
