@@ -116,7 +116,7 @@ class Voyage extends CommonObject
 		'rowid' => array('type'=>'integer', 'label'=>'TechnicalID', 'enabled'=>'1', 'position'=>1, 'notnull'=>1, 'visible'=>0, 'noteditable'=>'1', 'index'=>1, 'css'=>'left', 'comment'=>"Id"),
 		'ref' => array('type'=>'varchar(128)', 'label'=>'Ref', 'enabled'=>'1', 'position'=>20, 'notnull'=>1, 'visible'=>1, 'default'=>'(VOY)', 'index'=>1, 'searchall'=>1,),
 		'label' => array('type'=>'varchar(255)', 'label'=>'Label', 'enabled'=>'1', 'position'=>30, 'notnull'=>1, 'visible'=>1, 'alwayseditable'=>'1', 'searchall'=>1, 'css'=>'minwidth300', 'cssview'=>'wordbreak', 'validate'=>'1',),
-		'amount' => array('type'=>'price', 'label'=>'Amount', 'enabled'=>'1', 'default'=>0,'position'=>40, 'notnull'=>1, 'visible'=>1, 'isameasure'=>'1', 'validate'=>'1',),
+		'amount' => array('type'=>'price', 'label'=>'Amount', 'enabled'=>'1', 'default'=>0,'position'=>40, 'notnull'=>1, 'visible'=>1, 'isameasure'=>'1', 'validate'=>'1','help'=>'Si non renseigné : <br/> - Prix rempli en fonction du dictionnaire "prix par défaut par pays" <br/> - Ou prix rempli'),
 		'date_creation' => array('type'=>'datetime', 'label'=>'DateCreation', 'enabled'=>'1', 'position'=>500, 'notnull'=>1, 'visible'=>-2,),
 		'status' => array('type'=>'integer', 'label'=>'Status', 'enabled'=>'1', 'position'=>2000, 'notnull'=>1, 'visible'=>-2, 'index'=>1, 'arrayofkeyval'=>array('0'=>'Brouillon', '1'=>'Validé', '9'=>'Annulé'), 'validate'=>'1',),
 		'fk_pays' => array('type'=>'integer:Ccountry:core/class/ccountry.class.php', 'label'=>'Destination', 'enabled'=>'1', 'position'=>51, 'notnull'=>1, 'visible'=>1,),
