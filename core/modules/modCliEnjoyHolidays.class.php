@@ -130,7 +130,7 @@ class modCliEnjoyHolidays extends DolibarrModules
 		$this->dirs = array("/clienjoyholidays/temp");
 
 		// Config pages. Put here list of php page, stored into clienjoyholidays/admin directory, to use to setup module.
-		// $this->config_page_url = array("setup.php@clienjoyholidays");
+		 $this->config_page_url = array("setup.php@clienjoyholidays");
 
 		// Dependencies
 		// A condition to hide module

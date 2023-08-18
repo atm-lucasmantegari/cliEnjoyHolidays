@@ -225,29 +225,25 @@ class Voyage extends CommonObject
 	 */
 	public function create(User $user, $notrigger = false)
 	{
-		global $langs;
+		global $langs, $conf;
 		if (strlen($this->label) >= 5){
 
-			if ($this->amount == 0){
-				$sql = " SELECT amount";
-				$sql .= " FROM ". MAIN_DB_PREFIX ."clienjoyholidays_c_amountdefcountry";
-				$sql .= " WHERE active = 1 AND country =" . $this->fk_pays;
+			$sql = " SELECT amount";
+			$sql .= " FROM ". MAIN_DB_PREFIX ."clienjoyholidays_c_amountdefcountry";
+			$sql .= " WHERE active = 1 AND country =" . $this->fk_pays;
 
-				$resql = $this->db->query($sql);
-				if ($resql) {
+			$resql = $this->db->query($sql);
+			if ($resql) {
+				if ($this->amount == 0 || $this->amount == NULL) {
 					$obj = $this->db->fetch_object($resql);
-
-					$price = $obj->amount;
-
-
+					if ($obj) {
+						$price = $obj->amount;
+						$this->amount = $price;
+					} else {
+						$this->amount = $conf->global->CLIENJOYHOLIDAYS_GLOBALAMOUNT;
+					}
 				}
 			}
-
-
-
-
-
-
 			$resultcreate = $this->createCommon($user, $notrigger);
 			//$resultvalidate = $this->validate($user, $notrigger);
 			return $resultcreate;
