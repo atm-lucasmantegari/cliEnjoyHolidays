@@ -4,6 +4,8 @@
 
 ModuleCliEnjoyHolidaysName = EnjoyHolidays
 ModuleCliEnjoyHolidaysDesc = EnjoyHolidays description
+Create = Créer un voyage
+toShortLabel = Label trop court (5 caract. min.)
 
 #
 # Admin page

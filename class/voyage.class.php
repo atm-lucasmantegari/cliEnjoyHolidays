@@ -225,11 +225,16 @@ class Voyage extends CommonObject
 	 */
 	public function create(User $user, $notrigger = false)
 	{
-		$resultcreate = $this->createCommon($user, $notrigger);
+		global $langs;
+		if (strlen($this->label) >= 5){
+			$resultcreate = $this->createCommon($user, $notrigger);
+			//$resultvalidate = $this->validate($user, $notrigger);
+			return $resultcreate;
+		}else{
+			setEventMessages($langs->trans("toShortLabel"), '', 'errors');
+			return -1;
+		}
 
-		//$resultvalidate = $this->validate($user, $notrigger);
-
-		return $resultcreate;
 	}
 
 	/**
@@ -450,7 +455,15 @@ class Voyage extends CommonObject
 	 */
 	public function update(User $user, $notrigger = false)
 	{
-		return $this->updateCommon($user, $notrigger);
+		global $langs;
+
+		if (strlen($this->label) >= 5){
+			return $this->updateCommon($user, $notrigger);
+		}else{
+			setEventMessages($langs->trans("toShortLabel"), '', 'errors');
+		return -1;
+	}
+
 	}
 
 	/**
