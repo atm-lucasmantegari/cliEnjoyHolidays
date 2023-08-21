@@ -1121,4 +1121,5 @@ class Voyage extends CommonObject
 			}
 		}
 	}
+
 }

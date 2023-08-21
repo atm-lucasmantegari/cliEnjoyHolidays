@@ -633,7 +633,6 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 		$linktoelem = $form->showLinkToObjectBlock($object, null, array('voyage'));
 		$somethingshown = $form->showLinkedObjectBlock($object, $linktoelem);
 
-
 		print '</div><div class="fichehalfright">';
 	}
 

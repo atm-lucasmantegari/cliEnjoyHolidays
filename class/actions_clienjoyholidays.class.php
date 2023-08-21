@@ -361,20 +361,19 @@ class ActionsCliEnjoyHolidays
 
 	public function addMoreActionsButtons($parameters, &$object, &$action, $hookmanager)
 	{
-
 		global $langs, $params, $permissiontoadd;
-		if ($object->status == $object::STATUS_VALIDATED) {
+		if ($object->status == $object::STATUS_VALIDATED && $parameters['currentcontext']== 'propalcard') {
 			print dolGetButtonAction('', $langs->trans("CreateVoyage"), 'default', '../../custom/clienjoyholidays/voyage_card.php?action=create&origin=propal&originid=' . $object->id . '&token=' . newToken(), 'create', $permissiontoadd, $params);
 		}
 	}
 
-	public function setLinkedObjectSourceTargetType($parameters, $object, &$action, $hookmanager){
-
-		if ($parameters['targettype'] == ''){
-			$hookmanager->resArray['targettype'] = 'clienjoyholidays_voyage';
-			return 1;
-		}
-		return 0;
-	}
+	public function setLinkedObjectSourceTargetType($parameters, $object, &$action, $hookmanager)
+	{
+        if ($parameters['targettype'] == '' && $parameters['currentcontext'] == 'voyagecard'){
+            $hookmanager->resArray['targettype'] = 'clienjoyholidays_voyage';
+            return 1;
+        }
+        return 0;
+    }
 
 }
