@@ -242,6 +242,27 @@ $(document).ready(function(){
 	if (perm){
 		$("span.fas.fa-pencil-alt").hide();
 	}
+
+	const selectpays = $("#fk_pays");
+
+	selectpays.on('change', () => {
+		const val = selectpays.val();
+		$.ajax({
+		 	method: 'post',
+		 	url: 'scripts/interface.php',
+			data: {
+				action: 'updateamountcountry',
+				countryid: val,
+			}
+		}).done((response) => {
+			const verif = JSON.parse(response);
+			if (verif){
+				$("#amount").val(JSON.parse(response));
+			}else {
+				 echo -1;
+			}
+		})
+	});
 });
 
 </script>
