@@ -392,10 +392,10 @@ class modCliEnjoyHolidays extends DolibarrModules
 		// Exports profiles provided by this module
 		$r = 1;
 		/* BEGIN MODULEBUILDER EXPORT VOYAGE */
-		/*
+
 		$langs->load("clienjoyholidays@clienjoyholidays");
 		$this->export_code[$r]=$this->rights_class.'_'.$r;
-		$this->export_label[$r]='VoyageLines';	// Translation key (used only if key ExportDataset_xxx_z not found)
+		$this->export_label[$r]='Voyage';	// Translation key (used only if key ExportDataset_xxx_z not found)
 		$this->export_icon[$r]='voyage@clienjoyholidays';
 		// Define $this->export_fields_array, $this->export_TypeFields_array and $this->export_entities_array
 		$keyforclass = 'Voyage'; $keyforclassfile='/clienjoyholidays/class/voyage.class.php'; $keyforelement='voyage@clienjoyholidays';
@@ -417,7 +417,7 @@ class modCliEnjoyHolidays extends DolibarrModules
 		//$this->export_sql_end[$r]  =' LEFT JOIN '.MAIN_DB_PREFIX.'voyage_line as tl ON tl.fk_voyage = t.rowid';
 		$this->export_sql_end[$r] .=' WHERE 1 = 1';
 		$this->export_sql_end[$r] .=' AND t.entity IN ('.getEntity('voyage').')';
-		$r++; */
+		$r++;
 		/* END MODULEBUILDER EXPORT VOYAGE */
 
 		// Imports profiles provided by this module
