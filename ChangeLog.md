@@ -2,6 +2,7 @@
 
 ## 1.0
 
+- NEW - Add import/export CSV for 'voyage' - *22/08/2023* - 1.9
 - NEW - Addition of an extrafield “Specific mention” + "Reponsable" on propal - *22/08/2023* -1.8
 - NEW - Addition of a button on a propal for the creation of a trip + link between trip and propal - *21/08/2023* - 1.7
 - NEW - Add dynamic travel price management with AJAX - *18/08/2023* - 1.6
