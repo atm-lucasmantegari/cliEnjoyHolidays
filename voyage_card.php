@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
+global $db;
 
 /**
  *   	\file       voyage_card.php
@@ -95,6 +96,8 @@ $backtopage = GETPOST('backtopage', 'alpha');
 $backtopageforcancel = GETPOST('backtopageforcancel', 'alpha');
 $dol_openinpopup = GETPOST('dol_openinpopup', 'aZ09');
 
+$origin = GETPOST('origin', 'alpha');
+$originid = GETPOST('originid', 'int');
 // Initialize technical objects
 $object = new Voyage($db);
 $extrafields = new ExtraFields($db);
@@ -181,6 +184,7 @@ if (empty($reshook)) {
 
 	$triggermodname = 'CLIENJOYHOLIDAYS_VOYAGE_MODIFY'; // Name of trigger action code to execute when we modify record
 
+
 	// Actions cancel, add, update, update_extras, confirm_validate, confirm_delete, confirm_deleteline, confirm_clone, confirm_close, confirm_setdraft, confirm_reopen
 	include DOL_DOCUMENT_ROOT.'/core/actions_addupdatedelete.inc.php';
 
@@ -216,6 +220,7 @@ if (empty($reshook)) {
 	$trackid = 'voyage'.$object->id;
 	include DOL_DOCUMENT_ROOT.'/core/actions_sendmails.inc.php';
 }
+
 
 
 
@@ -279,6 +284,10 @@ if ($action == 'create') {
 	print '<form method="POST" action="'.$_SERVER["PHP_SELF"].'">';
 	print '<input type="hidden" name="token" value="'.newToken().'">';
 	print '<input type="hidden" name="action" value="add">';
+
+	print '<input type="hidden" name="origin" value="'.$origin.'">';
+	print '<input type="hidden" name="originid" value="'.$originid.'">';
+
 	if ($backtopage) {
 		print '<input type="hidden" name="backtopage" value="'.$backtopage.'">';
 	}
@@ -623,7 +632,6 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 		// Show links to link elements
 		$linktoelem = $form->showLinkToObjectBlock($object, null, array('voyage'));
 		$somethingshown = $form->showLinkedObjectBlock($object, $linktoelem);
-
 
 		print '</div><div class="fichehalfright">';
 	}
