@@ -174,8 +174,8 @@ class clienjoyholidayswidget1 extends ModeleBoxes
 				);
 
 				$this->info_box_contents[$line][] = array(
-					'td' => 'class="right" width="18"',
-					'text' => $voyagebox->amount,
+					'td' => 'class="right" width="100"',
+					'text' => $voyagebox->amount." €",
 				);
 
 				$this->info_box_contents[$line][] = array(
