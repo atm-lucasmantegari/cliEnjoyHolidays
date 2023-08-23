@@ -1133,26 +1133,32 @@ class Voyage extends CommonObject
 	public function deleteVoyageCron()
 	{
 
-		global $user, $object, $db;
+		global $user, $object, $db, $langs, $error;
 
-		$sql = " SELECT DATEDIFF(date_creation, CURRENT_DATE()) as datediff, rowid";
+		$sql = " SELECT rowid";
 		$sql .= " FROM " . MAIN_DB_PREFIX . "clienjoyholidays_voyage";
 		$sql .= " WHERE status = 0 and DATEDIFF(date_creation, CURRENT_DATE()) <= -21";
 
 		$resql = $this->db->query($sql);
+
+		$this->output = '';
+
 		if ($db->num_rows($resql) != 0) {
 			while ($obj = $db->fetch_object($resql)) {
 				if ($obj) {
 					$objvoy = new Voyage($this->db);
 					$objvoy->fetch($obj->rowid);
-					//$objvoy->setClosed($user, 0);
+					$objvoy->setClosed($user, 0);
 					$this->output .= $objvoy->getNomUrl(1) . "<br/>";
 				}
 			}
 		}else{
-			var_dump("NONOON");
+			$this->output .= "Pas de voyage(s) à cloturé(s)";
+			return $error;
 		}
+		return $error;
 	}
+
 
 
 }

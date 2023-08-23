@@ -2,6 +2,7 @@
 
 ## 1.0
 
+- NEW : Add CRON for set closed status for voyage create 3 weeks ago and status = draft - *22/08/2023* - 1.12
 - NEW : Add new contact type 'voyageur' + contact page on 'voyage' card - *22/08/2023* -1.11
 - NEW - Add new API for module - *22/08/2023* - 1.10
 - NEW - Add import/export CSV for 'voyage' - *22/08/2023* - 1.9
