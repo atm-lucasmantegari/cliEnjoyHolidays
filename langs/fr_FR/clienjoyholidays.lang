@@ -49,3 +49,8 @@ CliEnjoyHolidaysBoxDescription  = Les %s dernières formules de voyage créées
 #
 ENJOYHOLIDAYS_specificmention = Mention Spécifique
 ENJOYHOLIDAYS_reponsable = Reponsable :
+
+#
+# CRON
+#
+DeleteVoyageThreeWeek =

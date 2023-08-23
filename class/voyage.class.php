@@ -1143,14 +1143,12 @@ class Voyage extends CommonObject
 
 		$this->output = '';
 
-		if ($db->num_rows($resql) != 0) {
+		if ($db->num_rows($resql) != 0 && $resql) {
 			while ($obj = $db->fetch_object($resql)) {
-				if ($obj) {
 					$objvoy = new Voyage($this->db);
 					$objvoy->fetch($obj->rowid);
 					$objvoy->setClosed($user, 0);
 					$this->output .= $objvoy->getNomUrl(1) . "<br/>";
-				}
 			}
 		}else{
 			$this->output .= "Pas de voyage(s) à cloturé(s)";
