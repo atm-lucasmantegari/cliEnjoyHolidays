@@ -66,7 +66,7 @@ class Voyage extends CommonObject
 
 	const STATUS_DRAFT = 0;
 	const STATUS_VALIDATED = 1;
-	const STATUS_CANCELED = 9;
+	const STATUS_CLOSED = 9;
 
 
 	/**
@@ -655,6 +655,12 @@ class Voyage extends CommonObject
 		return $this->setStatusCommon($user, self::STATUS_DRAFT, $notrigger, 'VOYAGE_UNVALIDATE');
 	}
 
+	public function setClosed($user, $notrigger = 0){
+		// Protection
+
+		return $this->setStatusCommon($user, self::STATUS_CLOSED, $notrigger, 'VOYAGE_UNVALIDATE');
+	}
+
 	/**
 	 *    Set cancel status
 	 *
@@ -676,7 +682,7 @@ class Voyage extends CommonObject
 		 return -1;
 		 }*/
 
-		return $this->setStatusCommon($user, self::STATUS_CANCELED, $notrigger, 'VOYAGE_CANCEL');
+		return $this->setStatusCommon($user, self::STATUS_CLOSED, $notrigger, 'VOYAGE_CANCEL');
 	}
 
 	/**
@@ -887,15 +893,15 @@ class Voyage extends CommonObject
 			//$langs->load("clienjoyholidays@clienjoyholidays");
 			$this->labelStatus[self::STATUS_DRAFT] = $langs->transnoentitiesnoconv('Draft');
 			$this->labelStatus[self::STATUS_VALIDATED] = $langs->transnoentitiesnoconv('Enabled');
-			$this->labelStatus[self::STATUS_CANCELED] = $langs->transnoentitiesnoconv('Disabled');
+			$this->labelStatus[self::STATUS_CLOSED] = $langs->transnoentitiesnoconv('Disabled');
 			$this->labelStatusShort[self::STATUS_DRAFT] = $langs->transnoentitiesnoconv('Draft');
 			$this->labelStatusShort[self::STATUS_VALIDATED] = $langs->transnoentitiesnoconv('Enabled');
-			$this->labelStatusShort[self::STATUS_CANCELED] = $langs->transnoentitiesnoconv('Disabled');
+			$this->labelStatusShort[self::STATUS_CLOSED] = $langs->transnoentitiesnoconv('Disabled');
 		}
 
 		$statusType = 'status' . $status;
 		//if ($status == self::STATUS_VALIDATED) $statusType = 'status1';
-		if ($status == self::STATUS_CANCELED) {
+		if ($status == self::STATUS_CLOSED) {
 			$statusType = 'status6';
 		}
 
@@ -1123,5 +1129,39 @@ class Voyage extends CommonObject
 			}
 		}
 	}
+
+	/**
+	 *
+	 * Closed "Voyage" in CRON
+	 *
+	 */
+	public function closedVoyageCron()
+	{
+
+		global $user, $object, $db, $langs, $error;
+
+		$sql = " SELECT rowid";
+		$sql .= " FROM " . MAIN_DB_PREFIX . "clienjoyholidays_voyage";
+		$sql .= " WHERE status = 0 and DATEDIFF(date_creation, CURRENT_DATE()) <= -21";
+
+		$resql = $this->db->query($sql);
+
+		$this->output = '';
+
+		if ($db->num_rows($resql) != 0 && $resql) {
+			while ($obj = $db->fetch_object($resql)) {
+					$objvoy = new Voyage($this->db);
+					$objvoy->fetch($obj->rowid);
+					$objvoy->setClosed($user, 0);
+					$this->output .= $objvoy->getNomUrl(1) . "<br/>";
+			}
+		}else{
+			$this->output .= "Pas de voyage(s) à cloturé(s)";
+			return $error;
+		}
+		return $error;
+	}
+
+
 
 }
