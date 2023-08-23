@@ -245,13 +245,13 @@ class modCliEnjoyHolidays extends DolibarrModules
 
 		$this->cronjobs = array(
 			0 => array(
-				'label' => 'DeleteVoyageThreeWeek',
+				'label' => 'ClosedVoyageThreeWeek',
 				'jobtype' => 'method',
 				'class' => '/clienjoyholidays/class/voyage.class.php',
 				'objectname' => 'Voyage',
-				'method' => 'deleteVoyageCron',
+				'method' => 'closedVoyageCron',
 				'parameters' => '',
-				'comment' => 'Delete voyage if crate more three week ago and statut = draft',
+				'comment' => 'Closed voyage if crate more three week ago and statut = draft',
 				'frequency' => 1,
 				'unitfrequency'=>3600 * 24,
 				'status' => 0,

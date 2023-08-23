@@ -1130,7 +1130,12 @@ class Voyage extends CommonObject
 		}
 	}
 
-	public function deleteVoyageCron()
+	/**
+	 *
+	 * Closed "Voyage" in CRON
+	 *
+	 */
+	public function closedVoyageCron()
 	{
 
 		global $user, $object, $db, $langs, $error;
