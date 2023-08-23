@@ -33,7 +33,7 @@ function voyagePrepareHead($object)
 
 	$langs->load("clienjoyholidays@clienjoyholidays");
 
-	$showtabofpagecontact = 0;
+	$showtabofpagecontact = 1;
 	$showtabofpagenote = 0;
 	$showtabofpagedocument = 0;
 	$showtabofpageagenda = 0;

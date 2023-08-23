@@ -72,7 +72,7 @@ class modCliEnjoyHolidays extends DolibarrModules
 		$this->editor_url = '';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated', 'experimental_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.10';
+		$this->version = '1.11';
 		// Url to the file with your last numberversion of this module
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
@@ -123,6 +123,10 @@ class modCliEnjoyHolidays extends DolibarrModules
 			),
 			// Set this to 1 if features of module are opened to external users
 			'moduleforexternal' => 0,
+			// contact voyage
+			'contactelement' => array(
+				'voyage'=>'Voyage'
+			)
 		);
 
 		// Data directories to create when module is enabled.
@@ -162,8 +166,7 @@ class modCliEnjoyHolidays extends DolibarrModules
 
 		// Some keys to add into the overwriting translation tables
 		/*$this->overwrite_translation = array(
-			'en_US:ParentCompany'=>'Parent company or reseller',
-			'fr_FR:ParentCompany'=>'Maison mère ou revendeur'
+			'en_US:ParentCompany'=>'Parent company or reseller',			'fr_FR:ParentCompany'=>'Maison mère ou revendeur'
 		)*/
 
 		if (!isset($conf->clienjoyholidays) || !isset($conf->clienjoyholidays->enabled)) {
