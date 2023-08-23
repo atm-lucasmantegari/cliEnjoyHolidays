@@ -25,8 +25,7 @@ CREATE TABLE llx_clienjoyholidays_voyage(
 	fk_pays integer NOT NULL, 
 	datedepart datetime, 
 	datearrivee datetime, 
-	fk_transport integer,
-	import_key varchar(128),
-	fk_user_author varchar(128)
+	fk_transport integer, 
+	fk_soc integer NOT NULL
 	-- END MODULEBUILDER FIELDS
 ) ENGINE=innodb;
