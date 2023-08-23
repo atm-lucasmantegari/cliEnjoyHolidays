@@ -72,7 +72,7 @@ class modCliEnjoyHolidays extends DolibarrModules
 		$this->editor_url = '';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated', 'experimental_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.8';
+		$this->version = '1.9';
 		// Url to the file with your last numberversion of this module
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
@@ -392,10 +392,10 @@ class modCliEnjoyHolidays extends DolibarrModules
 		// Exports profiles provided by this module
 		$r = 1;
 		/* BEGIN MODULEBUILDER EXPORT VOYAGE */
-		/*
+
 		$langs->load("clienjoyholidays@clienjoyholidays");
 		$this->export_code[$r]=$this->rights_class.'_'.$r;
-		$this->export_label[$r]='VoyageLines';	// Translation key (used only if key ExportDataset_xxx_z not found)
+		$this->export_label[$r]='Voyage';	// Translation key (used only if key ExportDataset_xxx_z not found)
 		$this->export_icon[$r]='voyage@clienjoyholidays';
 		// Define $this->export_fields_array, $this->export_TypeFields_array and $this->export_entities_array
 		$keyforclass = 'Voyage'; $keyforclassfile='/clienjoyholidays/class/voyage.class.php'; $keyforelement='voyage@clienjoyholidays';
@@ -413,20 +413,20 @@ class modCliEnjoyHolidays extends DolibarrModules
 		//$this->export_examplevalues_array[$r] = array('t.field'=>'Example');
 		//$this->export_help_array[$r] = array('t.field'=>'FieldDescHelp');
 		$this->export_sql_start[$r]='SELECT DISTINCT ';
-		$this->export_sql_end[$r]  =' FROM '.MAIN_DB_PREFIX.'voyage as t';
+		$this->export_sql_end[$r]  =' FROM '.MAIN_DB_PREFIX.'clienjoyholidays_voyage as t';
 		//$this->export_sql_end[$r]  =' LEFT JOIN '.MAIN_DB_PREFIX.'voyage_line as tl ON tl.fk_voyage = t.rowid';
 		$this->export_sql_end[$r] .=' WHERE 1 = 1';
-		$this->export_sql_end[$r] .=' AND t.entity IN ('.getEntity('voyage').')';
-		$r++; */
+//		$this->export_sql_end[$r] .=' AND t.entity IN ('.getEntity('voyage').')';
+		$r++;
 		/* END MODULEBUILDER EXPORT VOYAGE */
 
 		// Imports profiles provided by this module
 		$r = 1;
 		/* BEGIN MODULEBUILDER IMPORT VOYAGE */
-		/*
+
 		$langs->load("clienjoyholidays@clienjoyholidays");
 		$this->import_code[$r]=$this->rights_class.'_'.$r;
-		$this->import_label[$r]='VoyageLines';	// Translation key (used only if key ExportDataset_xxx_z not found)
+		$this->import_label[$r]='Voyage';	// Translation key (used only if key ExportDataset_xxx_z not found)
 		$this->import_icon[$r]='voyage@clienjoyholidays';
 		$this->import_tables_array[$r] = array('t' => MAIN_DB_PREFIX.'clienjoyholidays_voyage', 'extra' => MAIN_DB_PREFIX.'clienjoyholidays_voyage_extrafields');
 		$this->import_tables_creator_array[$r] = array('t' => 'fk_user_author'); // Fields to store import user id
@@ -444,7 +444,7 @@ class modCliEnjoyHolidays extends DolibarrModules
 			't.ref' => array(
 				'rule'=>'getrefifauto',
 				'class'=>(empty($conf->global->CLIENJOYHOLIDAYS_VOYAGE_ADDON) ? 'mod_voyage_standard' : $conf->global->CLIENJOYHOLIDAYS_VOYAGE_ADDON),
-				'path'=>"/core/modules/commande/".(empty($conf->global->CLIENJOYHOLIDAYS_VOYAGE_ADDON) ? 'mod_voyage_standard' : $conf->global->CLIENJOYHOLIDAYS_VOYAGE_ADDON).'.php'
+				'path'=>"/core/modules/commande/".(empty($conf->global->CLIENJOYHOLIDAYS_VOYAGE_ADDON) ? 'mod_voyage_standard' : $conf->global->CLIENJOYHOLIDAYS_VOYAGE_ADDON).'.php',
 				'classobject'=>'Voyage',
 				'pathobject'=>'/clienjoyholidays/class/voyage.class.php',
 			),
@@ -452,7 +452,7 @@ class modCliEnjoyHolidays extends DolibarrModules
 			't.fk_user_valid' => array('rule' => 'fetchidfromref', 'file' => '/user/class/user.class.php', 'class' => 'User', 'method' => 'fetch', 'element' => 'user'),
 			't.fk_mode_reglement' => array('rule' => 'fetchidfromcodeorlabel', 'file' => '/compta/paiement/class/cpaiement.class.php', 'class' => 'Cpaiement', 'method' => 'fetch', 'element' => 'cpayment'),
 		);
-		$r++; */
+		$r++;
 		/* END MODULEBUILDER IMPORT VOYAGE */
 	}
 
