@@ -2,6 +2,7 @@
 
 ## 1.0
 
+- NEW - Addition of an extrafield “Specific mention” + "Reponsable" on propal - *22/08/2023* -1.8
 - NEW - Addition of a button on a propal for the creation of a trip + link between trip and propal - *21/08/2023* - 1.7
 - NEW - Add dynamic travel price management with AJAX - *18/08/2023* - 1.6
 - NEW - Addition of a default price per country using a dictionary - *17/08/2023* - 1.5
